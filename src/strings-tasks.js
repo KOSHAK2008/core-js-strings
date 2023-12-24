@@ -107,8 +107,9 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   removeLeadingWhitespaces('cat ') => 'cat '
  *   removeLeadingWhitespaces('\t\t\tHello, World! ') => 'Hello, World! '
  */
-function removeLeadingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingWhitespaces(value) {
+  return value.trimStart();
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -122,8 +123,9 @@ function removeLeadingWhitespaces(/* value */) {
  *   removeTrailingWhitespaces('cat ') => 'cat'
  *   removeTrailingWhitespaces('\t\t\tHello, World! ') => '\t\t\tHello, World!'
  */
-function removeTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeTrailingWhitespaces(value) {
+  return value.trimEnd();
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -140,11 +142,10 @@ function removeTrailingWhitespaces(/* value */) {
  *   repeatString('abc', -2) => ''
  */
 function repeatString(str, times) {
-  let newValue = '';
-  for (let i = 0; i < times; i += 1) {
-    newValue += str;
+  if (times > 0) {
+    return `${str.repeat(times)}`;
   }
-  return newValue;
+  return '';
   // throw new Error('Not implemented');
 }
 
@@ -161,6 +162,7 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeFirstOccurrences(str, value) {
+  str.indexOf(value);
   return str.replace(value, '');
   // throw new Error('Not implemented');
 }
@@ -177,8 +179,12 @@ function removeFirstOccurrences(str, value) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(str, value) {
+  // const long = value.length;
+  const lastIndex = str.lastIndexOf(value);
+  const replaced = str.substring(lastIndex);
+  return replaced;
+  // throw new Error('Not implemented');
 }
 
 /**
