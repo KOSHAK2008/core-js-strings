@@ -20,7 +20,10 @@
  *   getStringLength(undefined) => 0
  */
 function getStringLength(value) {
-  return Number(value.length);
+  if (value) {
+    return value.length;
+  }
+  return 0;
   // throw new Error('Not implemented');
 }
 
@@ -57,7 +60,7 @@ function isString(value) {
  *   concatenateStrings('', 'bb') => 'bb'
  */
 function concatenateStrings(value1, value2) {
-  return `${value1}${value2}`;
+  return value1.concat(value2);
   // throw new Error('Not implemented');
 }
 
@@ -73,7 +76,7 @@ function concatenateStrings(value1, value2) {
  *   getFirstChar('') => ''
  */
 function getFirstChar(value) {
-  return value.slice(0, 1);
+  return value.charAt(0);
   // throw new Error('Not implemented');
 }
 
@@ -136,12 +139,13 @@ function removeTrailingWhitespaces(/* value */) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString(/* str, times */) {
-  // let newValue = '';
-  // for (let i = 0; i < times; i += 1) {
-  //   newValue += str;
-  // } return newValue;
-  throw new Error('Not implemented');
+function repeatString(str, times) {
+  let newValue = '';
+  for (let i = 0; i < times; i += 1) {
+    newValue += str;
+  }
+  return newValue;
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -452,11 +456,15 @@ function extractEmails(str) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  // const originalAlpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  // const cipher = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM';
-  // return answer = str.replace(/[a-z]/gi, (letter) => cipher[originalAlpha.indexOf(letter)]);
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const originalAlpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const cipher = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM';
+  const answer = str.replace(
+    /[a-z]/gi,
+    (letter) => cipher[originalAlpha.indexOf(letter)]
+  );
+  return answer;
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -483,17 +491,63 @@ function encodeToRot13(/* str */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  // const arr = [
-  //   'A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
-  //   'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
-  //   'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
-  //   'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠',
-  // ];
-  // for (let i = 0; i < arr.length; i += 1) {
-  //   if (value === arr[i]) return i;
-  // }
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const arr = [
+    'A♣',
+    '2♣',
+    '3♣',
+    '4♣',
+    '5♣',
+    '6♣',
+    '7♣',
+    '8♣',
+    '9♣',
+    '10♣',
+    'J♣',
+    'Q♣',
+    'K♣',
+    'A♦',
+    '2♦',
+    '3♦',
+    '4♦',
+    '5♦',
+    '6♦',
+    '7♦',
+    '8♦',
+    '9♦',
+    '10♦',
+    'J♦',
+    'Q♦',
+    'K♦',
+    'A♥',
+    '2♥',
+    '3♥',
+    '4♥',
+    '5♥',
+    '6♥',
+    '7♥',
+    '8♥',
+    '9♥',
+    '10♥',
+    'J♥',
+    'Q♥',
+    'K♥',
+    'A♠',
+    '2♠',
+    '3♠',
+    '4♠',
+    '5♠',
+    '6♠',
+    '7♠',
+    '8♠',
+    '9♠',
+    '10♠',
+    'J♠',
+    'Q♠',
+    'K♠',
+  ];
+  return arr.indexOf(value);
+  // throw new Error('Not implemented');
 }
 
 module.exports = {
