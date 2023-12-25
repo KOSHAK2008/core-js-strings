@@ -180,10 +180,14 @@ function removeFirstOccurrences(str, value) {
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeLastOccurrences(str, value) {
-  // const long = value.length;
+  // return str.slice(0, str.lastIndexOf(value));
   const lastIndex = str.lastIndexOf(value);
-  const replaced = str.substring(lastIndex);
-  return replaced;
+
+  if (lastIndex !== -1) {
+    return str.slice(0, lastIndex) + str.slice(lastIndex + value.length);
+  }
+
+  return str;
   // throw new Error('Not implemented');
 }
 
